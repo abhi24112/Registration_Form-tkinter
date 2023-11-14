@@ -49,8 +49,6 @@ def user(): #this open the registeration form for the user.
     b1=Button(main,text="X",fg="red",command=main.destroy)
     b1.place(x=550, y=0, width=50, height=30)
 
-
-
     #database
     def database():
         name=v1.get()
@@ -84,7 +82,7 @@ def user(): #this open the registeration form for the user.
     b1.place(x=250,y=300,height=40,width=120)
 
     main.mainloop()
-    
+  
 
 def admin(): #this will open the admin panel for the admin
     
@@ -115,10 +113,10 @@ def admin(): #this will open the admin panel for the admin
     font=("Comic Sans MS",20,"underline"),width=20)
     L4.place(x=140,y=20)
 
-    t=Text(main,width=28,height=1,font=("Comic Sans MS",15))
-    t.place(x=125,y=400)
 
     def login(): 
+        t=Text(main,width=28,height=1,font=("Comic Sans MS",15))
+        t.place(x=125,y=400)
         log_id=a1.get()
         password=a2.get()
         t.delete("1.0","end")
@@ -127,7 +125,6 @@ def admin(): #this will open the admin panel for the admin
             dataprinting()
         else:
             t.insert("end","--Please Enter Correct Password--")
-
 
     def dataprinting():
         L2.destroy()
@@ -141,6 +138,7 @@ def admin(): #this will open the admin panel for the admin
 
         conn=sq.connect("RegForm.db")
         cur=conn.cursor()
+
         try:
             cur.execute("select name from data")
             a=cur.fetchall()
@@ -152,20 +150,19 @@ def admin(): #this will open the admin panel for the admin
         for i in a:
             l.append(i[0])
 
-
         value=StringVar()
         menu=OptionMenu(main,value,*l)
         menu.place(x=200,y=20)
         value.set("Select student")
-    
-        #now put code here!!!!
 
+        #now put code here!!!!
 
     b1=Button(main,text="Log In",fg="White",bg="red",font=("Comic Sans MS",15),command=login)
     b1.place(x=200,y=200,height=40,width=200)
-
     main.mainloop()
     
+
+
 #main program
 main=Tk()
 main.geometry("600x500")
