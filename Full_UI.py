@@ -9,7 +9,6 @@ def user(): #this open the registeration form for the user.
 
     clear_window(main)
     
-
     v1=StringVar()
     v2=StringVar()
     gen=StringVar()
@@ -67,15 +66,15 @@ def user(): #this open the registeration form for the user.
         cur=conn.cursor()
         cur.execute("""create table if not exists data
                   (Name text,Surname text,Gender text,Country text,Phone_no text)""")
-        cur.execute("""insert into data values (?,?,?,?,?)""",(name,surname,gender,country,phone))
+        cur.execute("insert into data values (?,?,?,?,?)",(name,surname,gender,country,phone))
         conn.commit()
         cur.close()
         conn.close()
     
-    #thank label
-    t=Text(main,width=18,height=1,font=("Comic Sans MS",15))
-    t.place(x=200,y=400)
-    t.insert("end","You form is submitted")
+        #thank label
+        t=Text(main,width=18,height=1,font=("Comic Sans MS",15))
+        t.place(x=200,y=400)
+        t.insert("end","You form is submitted")
 
     #Submit button
     b1=Button(main,text="Submit",fg="White",bg="red",font=("Comic Sans MS",15),command=database)
@@ -173,11 +172,11 @@ def admin(): #this will open the admin panel for the admin
             final_textbox=Text(main,height=5,width=25,font=("Comic Sans MS",15))
             final_textbox.place(x=20,y=60)
             for i in candi_data:
-                final_textbox.insert("end",f"Name:{i[0]}\n")
-                final_textbox.insert("end",f"Surname:{i[1]}\n")
-                final_textbox.insert("end",f"Gender:{i[2]}\n")
-                final_textbox.insert("end",f"Country:{i[3]}\n")
-                final_textbox.insert("end",f"Phone no:{i[4]}")
+                final_textbox.insert("end",f"Name: {i[0]}\n")
+                final_textbox.insert("end",f"Surname: {i[1]}\n")
+                final_textbox.insert("end",f"Gender: {i[2]}\n")
+                final_textbox.insert("end",f"Country: {i[3]}\n")
+                final_textbox.insert("end",f"Phone no: {i[4]}")
             
         submit_button = Button(main,text="Submit",fg="White",bg="red",font=("Comic Sans MS",15),command=submit)
         submit_button.place(x=380, y=20,height=40,width=120)
