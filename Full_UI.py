@@ -118,7 +118,7 @@ def admin(): #this will open the admin panel for the admin
         global t
         log_id=a1.get()
         password=a2.get()
-        if (password==" ") and (log_id==" "):
+        if (password=="9910") and (log_id=="abhishek"):
             dataprinting()
         else:
             t=Text(main,width=28,height=1,font=("Comic Sans MS",15))
