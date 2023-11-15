@@ -114,19 +114,23 @@ def admin(): #this will open the admin panel for the admin
     L4.place(x=140,y=20)
 
 
+    
     def login(): 
-        t=Text(main,width=28,height=1,font=("Comic Sans MS",15))
-        t.place(x=125,y=400)
+        global t
         log_id=a1.get()
         password=a2.get()
-        t.delete("1.0","end")
         if (password==" ") and (log_id==" "):
-            t.destroy()
             dataprinting()
         else:
+            t=Text(main,width=28,height=1,font=("Comic Sans MS",15))
+            t.place(x=125,y=400)
             t.insert("end","--Please Enter Correct Password--")
 
     def dataprinting():
+        try:
+            t.destroy()
+        except NameError:
+            pass
         L2.destroy()
         E1.destroy()
         L3.destroy()
@@ -149,13 +153,35 @@ def admin(): #this will open the admin panel for the admin
         l=[]
         for i in a:
             l.append(i[0])
-
         value=StringVar()
         menu=OptionMenu(main,value,*l)
         menu.place(x=200,y=20)
         value.set("Select student")
 
-        #now put code here!!!!
+        conn=sq.connect("RegForm.db")
+        c=conn.cursor()
+
+        def submit():
+            selected_value=value.get()
+            if selected_value == "Select student":
+                return
+            # if i don't put this "," after the selected_value it going to show the error.
+            # sqlite3.ProgrammingError: Incorrect number of bindings supplied. 
+            # The current statement uses 1, and there are 14 supplied.
+            c.execute("select * from data where name = ? ",(selected_value,)) 
+            candi_data=c.fetchall()
+            final_textbox=Text(main,height=5,width=25,font=("Comic Sans MS",15))
+            final_textbox.place(x=20,y=60)
+            for i in candi_data:
+                final_textbox.insert("end",f"Name:{i[0]}\n")
+                final_textbox.insert("end",f"Surname:{i[1]}\n")
+                final_textbox.insert("end",f"Gender:{i[2]}\n")
+                final_textbox.insert("end",f"Country:{i[3]}\n")
+                final_textbox.insert("end",f"Phone no:{i[4]}")
+            
+        submit_button = Button(main,text="Submit",fg="White",bg="red",font=("Comic Sans MS",15),command=submit)
+        submit_button.place(x=380, y=20,height=40,width=120)
+
 
     b1=Button(main,text="Log In",fg="White",bg="red",font=("Comic Sans MS",15),command=login)
     b1.place(x=200,y=200,height=40,width=200)
@@ -183,3 +209,6 @@ b2.place(x=380,y=150,height=40,width=120)
 
 main.mainloop()
 print("--Thank you for using this application--")
+
+
+
