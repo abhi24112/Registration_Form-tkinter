@@ -14,6 +14,9 @@ This project is a simple yet effective Registration Form Interface created using
 
 ## Screenshots
 
+### Full User Interface
+![image](https://github.com/abhi24112/Registration_Form-tkinter/assets/91802093/708cf50e-ff7b-42ab-b12c-6561f463938d)
+
 ### Registration Form Interface
 
 #### 1.If No Error Is Found:
@@ -23,9 +26,12 @@ This project is a simple yet effective Registration Form Interface created using
 ![image](https://github.com/abhi24112/Registration_Form-tkinter/assets/91802093/74889d2f-a132-40ef-8567-918ca2434429)
 
 ### Admin Portal
+![image](https://github.com/abhi24112/Registration_Form-tkinter/assets/91802093/20c8b6df-5365-4617-b40b-69124f9f3d67)
+
 
 #### 1.If No Error Is Found:
-![image](https://github.com/abhi24112/Registration_Form-tkinter/assets/91802093/8b8bc76d-8dfd-49b7-a267-1522b4bf96d8)
+![image](https://github.com/abhi24112/Registration_Form-tkinter/assets/91802093/36b14c27-d5ea-4b15-9ce4-554db278d7b9)
+
 
 #### 2.If Error is Found:
 ![image](https://github.com/abhi24112/Registration_Form-tkinter/assets/91802093/940b7605-fd01-489d-bb2e-bd56a4bd0c7e)
